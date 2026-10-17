@@ -11,8 +11,8 @@ app = create_app()
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 
 
-def probar_conexion():
-    """Prueba rapida de la base de datos (paso 5 del manual de Flask y MySQL)."""
+def conexion_haiven():
+    """Conexión a la base de datos."""
     with app.app_context():
         try:
             db.session.execute(text('SELECT 1'))
@@ -23,7 +23,7 @@ def probar_conexion():
 
 
 if __name__ == "__main__":
-    probar_conexion()
+    conexion_haiven()
 
     port = int(os.environ.get("PORT", 5000))
 
